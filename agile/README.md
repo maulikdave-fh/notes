@@ -1,7 +1,7 @@
 # About Agile
 Agile Manifesto (4 items) -> 12 Principles of Agile Software -> Multiple Methods (Scrum / Kanban / Scrumban / XP / Lean Development / SAFe / and many more)
 
-In brief, Agile is about putting the customer business needs first, eliminating wasteful processes and promoting in-person interactions among team-members and with customer representative.
+In brief, Agile is about putting the customer business needs first, eliminating wasteful processes and promoting in-person interactions among team-members and with customer to deliver meaningful software.
 
 # Agile Manifesto values
 1. <b>Individuals and interactions</b> over processes and tools
