@@ -4,15 +4,14 @@ Defining correct boundaries for the microservies is important so the system does
 
 # Boundaries of Microservices
 ## Common mistakes
-1. Splitting by Application layers - separate microservices for presentation layer, business-logic layer, infrastructure layer
-Every new feature will need change in all 3 microservices requiring careful planning and release coordination between different teams. No organization scalability. Breaking 3 tier app into more tiers won't work.
+1. **Splitting by Application layers** - separate microservices for presentation layer, business-logic layer, infrastructure layer. Every new feature will need change in all 3 microservices requiring careful planning and release coordination between different teams. No organization scalability. Breaking 3 tier app into more tiers won't work.
 ![Mistake 1!](images/mistake_tiers.png)
 
-2. Splitting by Technology boundaries - while this may bring in some performance benefits, outside stakeholders (product managers, etc) won't know which subsystem / team / service gets new task. Naming terminology of each API will be too convoluted. Also, business logic layer microservice is still too big and has a potential to become yet another monolith.
+2. **Splitting by Technology boundaries** - while this may bring in some performance benefits, outside stakeholders (product managers, etc) won't know which subsystem / team / service gets new task. Naming terminology of each API will be too convoluted. Also, business logic layer microservice is still too big and has a potential to become yet another monolith.
 
 ![Mistake 2!](images/mistake_tech.png)
 
-3. Splitting for Minimum size - we looked at "micro" in microservices and assumed that splitting the monolithic app into tiny services would give us the best benefits - smaller the better. Splitting by package / class is a common mistake.
+3. **Splitting for Minimum size** - we looked at "micro" in microservices and assumed that splitting the monolithic app into tiny services would give us the best benefits - smaller the better. Splitting by package / class is a common mistake.
 
 ![Mistake 3!](images/mistake_size.png)
 
@@ -22,5 +21,20 @@ Each core principle below is related to common mistakes above, respectively
 1. High Cohesion: Elements that are tightly related to each other and change together, should stay together. Allows each team to operate independently. 
 2. Single Responsibility Principle: Each microservice should do only one thing and do it exceptionally well. No ambiguity about where new functionality should go and which team owns what. Easy to follow API for each microservice because all terminology (entities, identifiers, etc) are bound to a given context
 3. Loosely coupled - Little / no inter-dependency - minimum communication with other microservices. 
+
+# Decomposing Monolithic App to Microservices
+Methods to decompose Monolithic App to Microservices:
+1.  Decomposition by Business Capabilities - Business capability is any core capability that provides value to the business or its customers. The value can be in-terms of revenue, customer experience, marketing, etc.
+
+Once we identify the business capabilities, we can map each capability to a microservice.
+
+One of the ways to identify business capabilities, is to run a thought experiment;
+- Describe the system to a non-technical person
+- Explain what system does / what value each capability provides
+- Apply the 3 core principles to the capabilities and validate
+
+![Decomposition!](images/decompose_business_capabilities.png)
+
+2.  Decomposition by Domain / sub-domain - Core Domain(s), Supporting, Generic - Domain Driven Design can be used to derive it
 
 
