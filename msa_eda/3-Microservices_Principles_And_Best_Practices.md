@@ -76,4 +76,50 @@ These are recommendations but actual boundaries may differ from company to compa
 2. Seniority of developers - generally, more senior the developers are, more freedom they prefer
 3. Company's culture
 
+# Micro Frontends Architecture Pattern
+## Problems of Monolithic Frontend
+One frontend team that maintains a single code-base responsible for all user experience. The code-base resides in a single repo. Any change in any of the microservice will need frontend team's time to enable that feature - this creates dependency and tight coupling. Also, the frontend team may become a bottleneck. 
+
+On the other side, frontend team will have to learn APIs & business domain of each microservice to add a new feature. 
+
+In addition to above mentioned organizational problem, the frontend code may become too large to maintain and to reason about. These are the same set of problems that we dealt with in a monolithic backend app.  
+
+## Micro Frontends Architecture Pattern
+1. Split monolithic frontend to multiple micro frontend modules and libs. The split can happen based on business capabilities or domain.
+
+Typically, each page in the web frontend becomes a micro frontend. We can also have several micro frontends visible on the same page.
+
+Each micro frontend should know how to load, mount and unmount itself from the DOM in the browser. Each micro frontend can be loaded standalone in a browser for testing purposes. 
+![Micro Frontends!](images/micro_frontend.png)
+
+Each micro frontend is owned by a separate team with full-stack capabilities & domain knowledge to develop and maintain this micor frontend. 
+
+2. Container App
+All these micro frontends are assembled at run-time by the container web app when user loads our site in a browser. 
+![Container App!](images/container_app.png)
+
+**Role of a Container App**
+1. Render common elements like page headers and footers
+2. Take care of common functionality like authentication and shared libs
+3. Tell each micro frontend when / where to be rendered
+
+**Sources of Confusion**
+1. Micro frontends is an architecture pattern - **not** a framework / lib
+2. Micro frontends are **not** reusable UI elements
+
+## Benefits
+1. Replaced the complex monolithic frontend codebase with small and manageable micro frontends
+2. Full-stack ownership of each micro frontend - loose coupling between teams
+3. Easier / faster to test in isolation
+4. Separate CI / CD pipeline
+5. Independent release schedule
+
+## Best Practices
+1. Ensure that micro frontends are loaded at runtime by the container app and are not expressed as compile time dependencies of the container app
+2. Micro frontends shouldn't share state in the browser - it is like microservices sharing a database
+3. Intercommunication among micro frontends can be through;
+- custom events
+- passing callbacks
+- using browsers address bar
+
 
