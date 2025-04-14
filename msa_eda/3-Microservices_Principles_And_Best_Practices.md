@@ -122,4 +122,38 @@ All these micro frontends are assembled at run-time by the container web app whe
 - passing callbacks
 - using browsers address bar
 
+# API Management
+## Problems
+1. If we have dozens of microservices exposed, the clients will have to hardcode API endpoints across client frontends and SDKs. This tightly couples API endpoints to client-side code
+2. Different type of API technology may be needed for different consumers. I.e.; SOAP XML / REST / gRPC  
+3. Support for different API versions / tiers based on subscription level
+4. Traffic control and monitoring
+- Since each client makes a direct call to different micorservices, their monitoring becomes difficult
+- Each microservice will have to write similar boilerplate code for authentication, rate-limiting, etc
+
+## Solution
+To decouple our client side from internal architecture and to make API management easier, we can use **API Gateway** pattern.
+1. API routing
+2. API type / data-format transformation based on client needs - this frees up microservices from worrying about client needs and they can all follow one standard, and utilize the same infrastructure
+3. Traffic management and throttling / rate-limiting
+4. We can also delegate authorization and TLS termination to the API gateway
+5. Enables centralized monitoring
+6. Certain API gateways also support fanning out the request to multiple microservices and aggregating results to send back it to client. This can be particularly useful for handheld & IoT devices where battery life is a limiting factor - can help reduce number of connections to backend
+
+## Load Balancer vs. API Gateway
+1. Both route a request to a single destination - but here is where similarities help. Both have different roles. 
+2. In-context of microservices, we typically have a load balancer in front of each microservice where each microservice is a deployed as a group of identical instances
+3. Load balancer features;
+- Aims to be as simple as possible to reduce performance overhead
+- Performs health checks on instances in it's cluster to ensure it doesn't route request to unresponsive instances
+- Offers different load balancing algorithms for different workloads
+4. API Gateway features;
+- Throttling
+- Monitoring
+- API versioning and management
+- Protocol / Data transformation
+
+
+
+
 
