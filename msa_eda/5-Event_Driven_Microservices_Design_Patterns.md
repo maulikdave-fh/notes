@@ -57,3 +57,41 @@ Due to Separation of Concerns, we get following benefits;
 - Since CQRS only guarantees eventual consistency, it may not be a right choice for certain financial use cases. E.g.; Show balance.
 
 # Event Sourcing Pattern
+## Problem Statement
+Finding a previous state of a record in database is not always straight-forward. But in some use cases (transaction history, re-conciliation, etc), we need previous states for visualization, auditing and potential corrections. 
+
+## The Pattern
+The events for a given entity reflects either a change or a fact. The events are immutable. Only thing that we can do is to append new events at the end of the log.
+![Event Sourcing!](image/event_sourcing1.png)
+
+To know the current state of the entity, we can replay all the events.
+![Event Sourcing!](image/event_sourcing2.png)
+
+## Event Storage Strategies
+1. Database - separate record for each event
+- Ability to generate insights using SQL queries
+![Event Sourcing!](image/event_sourcing3.png)
+2. Message Broker - separate message for each event
+- Not good for performing complex queries 
+
+## Benefits
+1. Visualization
+2. Monitoring
+3. Auditing
+4. High Write Performance - appending is faster. Updating the same record by multiple instances has high contention -> poor performance
+
+## Replaying Strategies
+Replaying all the events may not be always efficient. For example; to show account balance. To optimize it, we can apply few strategies;
+1. Snapshots - we can take a snapshot of user's account balance once a month.
+![Event Sourcing!](image/event_sourcing4.png)
+2. CQRS Pattern
+- Using CQRS, we can separate the parts that appends events to our system and stores them from the query part. The query part stores the events in the read-optimized database. The read-only database can even be an in-memory DB.
+
+By using CQRS, command side doesn't need a special database. The message broker provides storage capability.
+![Event Sourcing!](image/event_sourcing5.png)
+
+This combination is very popular because;
+1. We get history and auditing
+2. We get fast and efficient writes
+3. We get fast and efficient reads
+
