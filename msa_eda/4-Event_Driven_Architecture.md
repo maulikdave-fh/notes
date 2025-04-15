@@ -94,6 +94,8 @@ Some message broker technologies do support generation of idempotency id. If it 
         MB -->> PUB : Ack - if PUB doesn't receive the ack, it will resend Event + id
         PUB ->> MB : Resent Event + Id - MB checks if event with the same idempotency<br/>id is already in the log. If it is, MB will ignore the resent event.<br/>Otherwise, the event will be added to the log. 
         MB ->> SUB : Idempotency id check / handling - for this, consumer has to maintain <br/>idempotency id against the event record for this check. The consumer<br/>can programatically reject the event if the its database already has <br/>a record with the same idempotency id.
+        SUB ->> DB : store idempotency id along with record
+        DB -->> SUB : Ack
         SUB -->> MB : Ack      
 ```
 
