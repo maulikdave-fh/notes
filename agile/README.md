@@ -158,12 +158,12 @@ Project Mgmt falls into a lifecycle of product management.</mark>
 
 ## Incremental vs. Iterative 
 <mark><b>Iterative development</b> is an approach where you build entire product as a whole and based on the feedback, make changes and release it again as a whole. You follow this cycle until customer is satisfied with the product.<br>
-<b>Increment development</b> is an approach where you build and deliver product features in increments. 
+<b>Increment development</b> is an approach where you build and deliver product features in increments. </mark>
 <table>
   <tr><th>Approach</th><th>Requirements</th><th>Activities</th><th>Delivery</th><th>Goal</th></tr>
   <tr><td>Predictive (Waterfall)</td><td>Fixed</td><td>Performed once for the entire project</td><td>Single Delivery</td><td>Manage Cost</td></tr>
   <tr><td>Iterative</td><td>Dynamic</td><td>Repeated until correct</td><td>Single Delivery</td><td>Correctness of solution</td></tr>
   <tr><td>Incremental (Scrum)</td><td>Dynamic</td><td>Performed once for a given increment</td><td>Frequent Smaller Deliveries</td><td>Speed</td></tr>
 </table>
-<br>Agile leverages Iterative and Incremental, both. Choose what is best for the project.</mark>
+<mark><br>Agile leverages Iterative and Incremental, both. Choose what is best for the project.</mark>
 
