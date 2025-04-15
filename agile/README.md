@@ -141,7 +141,7 @@ Individuals, group, or organization that may affect, be affected, or perceive to
 ## Areas of a Project
 Scope, Schedule, Cost, Quality (Customer Satisfaction), Resources, Commmunications (Stakeholders get correct information at the right time), Risk (Identifying and and responding to the risks over project lifecycle), Procurements, Stakeholders' Engagement (Keeping all stakeholders active and alert on the project)
 
-## Project vs. Project Management
+## Project vs. Product Management
 Product Mgmt encompasses the strategic planning, developement, and lifecycle management of a product or a service. It involves understanding market needs, defining product strategy, gathering requirements, and overseeing the product's development, launch and ongoing optimization. Product Managers are responsible for overall success of the product, aligning it with business objectives and customer demands.
 
 Project Mgmt falls into a lifecycle of product management. 
