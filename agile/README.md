@@ -1,9 +1,9 @@
 # About Agile
-Agile Manifesto (4 items) -> 12 Principles of Agile Software -> Multiple Methods (Scrum / Kanban / Scrumban / XP / Lean Development / SAFe / and many more)
+<span style="color:yellow">Agile Manifesto (4 items) -> 12 Principles of Agile Software -> Multiple Methods (Scrum / Kanban / Scrumban / XP / Lean Development / SAFe / and many more)
 
 In brief, Agile is about putting the customer business needs first, eliminating wasteful processes and promoting in-person interactions among team-members and with customer to deliver meaningful software.
 
-As part of structured autonomy, each team should be able to decide which specific agile method to follow and their release schedules.
+As part of structured autonomy, each team should be able to decide which specific agile method to follow and their release schedules.</span>
 
 # Agile Manifesto values
 1. <b>Individuals and interactions</b> over processes and tools
@@ -26,7 +26,9 @@ As part of structured autonomy, each team should be able to decide which specifi
 12. Retrospectives for continous improvements
 
 # Inverting the Triangle
+<span style="color:yellow">
 In Traditional project mgmt, Scope is fixed, Time and Cost vary. In Agile, Time and Cost are fixed, scope vary. With time and cost fixed, Agile forces you to focus on delivering the most valuable features to your customers. 
+</span>
 
 # Agile Methods
 ## Scrum (Means Meeting)
@@ -42,14 +44,14 @@ In Traditional project mgmt, Scope is fixed, Time and Cost vary. In Agile, Time 
 10. Release - Several sprints worth of work directed to operations for possible rollout
 
 ## eXtreme Programming (XP)
-1. <b>Core Values</b> Simplicity, Commuication, Feedback, Courage (Transparency), Respect
+1. <b>Core Values</b> Simplicity, Communication, Feedback, Courage (Transparency), Respect
 2. <b>Roles</b> Coach, Customer, Programmers, Testers
-3. <b>Practices</b> Planning Activities - Release Planning, Iteration Planning, Small Releases, Collective Code Ownership, Coding Standards, Sustainable Pace, Continuous Integraion, TDD, Pair Programming, Simple Design, Refactoring
+3. <b>Practices</b> Planning Activities - Release Planning, Iteration Planning, Small Releases, Collective Code Ownership, Coding Standards, Sustainable Pace, Continuous Integration, TDD, Pair Programming, Simple Design, Refactoring
 4. Scrum and XP are not too different
 
 ## Lean Development
 1. <b>Principles</b> Using visual management tools, Identify customer-defined values, Learning and continuous Improvements
-2. Elimate Waste (partially done work, delays, handoffs, unnecessary features, extra processes, defects, task switchings), Empower Team, Deliver Fast, Optimize the Whole, Build Quality in, Defer Decisions, Amplify Learning
+2. Eliminate Waste (partially done work, delays, hand-offs, unnecessary features, extra processes, defects, task switchings), Empower Team, Deliver Fast, Optimize the Whole, Build Quality in, Defer Decisions, Amplify Learning
 
 ## Kanban (JP word for Signboard)
 1. Derived from Lean Development
@@ -65,7 +67,7 @@ In Traditional project mgmt, Scope is fixed, Time and Cost vary. In Agile, Time 
 
 # Agile Tools & Techniques
 ## Prioritization Techniques
-Features are prioritized based on business value, risk and dependencies
+<span style="color:yellow">Features are prioritized based on business value, risk and dependencies</span>
 ### Simple Scheme
 1. Priority 1, Priority 2, Priority 2, etc
 2. Could be problematic as many items might become the first priority
@@ -75,18 +77,20 @@ Features are prioritized based on business value, risk and dependencies
 3. Could Have
 4. Would like to have, but not this time
 ### Dot Voting or Multi-Voting / Monopoly Money
+<span style="color:yellow">
 1. Each person gets a certain number of dots / money to distribute to the requirements that they value the most
+</span>
 
 ## Deliver Value Incrementally
 
 ## Minimal Viable Product
-A set of functionality that is complete to be useful, but small enough not to be an entire project - Quicker go to market -> Early feedback
+<span style="color:yellow">A set of functionality that is complete to be useful, but small enough not to be an entire project - Quicker go to market -> Early feedback</span>
 
 ## Value Decomposition
-One of the techinques - Design the product box
+One of the techniques - Design the product box
 
 ## Definition of Done
-Shared understanding of what it means when work is considered done, it should be defined at the beginning of the project. Examples; DoD for Unit & functional tests, DoD for development, DoD for a story
+<span style="color:yellow">Shared understanding of what it means when work is considered done, it should be defined at the beginning of the project. Examples; DoD for Unit & functional tests, DoD for development, DoD for a story</span>
 
 # Information Radiators 
 ## Burndown Chart
@@ -124,16 +128,16 @@ Elasped time between when a work item "started" and the current time. It is a le
 
 # Important Terms & Concepts
 ## Project
-A temporary endeavor that produces a unique product, service, or result. Has definite beginning and ending. Can be part of a large program / portfolio. Projects enable changes.
+<span style="color:yellow">A temporary endeavor that produces a unique product, service, or result. Has definite beginning and ending. Can be part of a large program / portfolio. Projects enable changes.</span>
 
 ## Project Management
 Application of knowledge, tools, skills, and techniques to satisfy project requirements. 
 
 ## Program Management
-Group of related projects managed in a coordinated way to obtain benefits and control not available from managing them individually
+<span style="color:yellow">Group of related projects managed in a coordinated way to obtain benefits and control not available from managing them individually</span>
 
 ## Portfolio Management
-A collection of projects, programs, subsidiary portfolios, and operations managed as a group to achieve strategic (long term) objectives.
+<span style="color:yellow">A collection of projects, programs, subsidiary portfolios, and operations managed as a group to achieve strategic (long term) objectives.</span>
 
 ## Stakeholders
 Individuals, group, or organization that may affect, be affected, or perceive to be affected by the project. Examples; Customer, Project Team, Project Sponsor.
@@ -142,18 +146,18 @@ Individuals, group, or organization that may affect, be affected, or perceive to
 Scope, Schedule, Cost, Quality (Customer Satisfaction), Resources, Commmunications (Stakeholders get correct information at the right time), Risk (Identifying and and responding to the risks over project lifecycle), Procurements, Stakeholders' Engagement (Keeping all stakeholders active and alert on the project)
 
 ## Project vs. Product Management
-Product Mgmt encompasses the strategic planning, developement, and lifecycle management of a product or a service. It involves understanding market needs, defining product strategy, gathering requirements, and overseeing the product's development, launch and ongoing optimization. Product Managers are responsible for overall success of the product, aligning it with business objectives and customer demands.
+<span style="color:yellow">Product Mgmt encompasses the strategic planning, developement, and lifecycle management of a product or a service. It involves understanding market needs, defining product strategy, gathering requirements, and overseeing the product's development, launch and ongoing optimization. Product Managers are responsible for overall success of the product, aligning it with business objectives and customer demands.
 
-Project Mgmt falls into a lifecycle of product management. 
+Project Mgmt falls into a lifecycle of product management.</span> 
 
 ## Risk vs Issues vs Assumptions vs Constraints
 <b>Risks</b> are potential events or situations that may occur in the future and have an impact on the project's success<br>
 <b>Issues</b> refer to problems and challenges that arise during the course of a project. They are typically negative events and circumstances that can hinder progress or impact project objectives<br>
-<b>Assumptions</b> are statments or beliefs that are considered to be true or valid for the purpose of planning and decision-making<br>
+<b>Assumptions</b> are statements or beliefs that are considered to be true or valid for the purpose of planning and decision-making<br>
 <b>Constraints</b> are limitations or restrictions that affect project planning and execution<br>
 
 ## Incremental vs. Iterative 
-<b>Iterative development</b> is an approach where you build entire product as a whole and based on the feedback, make changes and release it again as a whole. You follow this cycle until customer is satisfied with the product.<br>
+<span style="color:yellow"><b>Iterative development</b> is an approach where you build entire product as a whole and based on the feedback, make changes and release it again as a whole. You follow this cycle until customer is satisfied with the product.<br>
 <b>Increment development</b> is an approach where you build and deliver product features in increments. 
 <table>
   <tr><th>Approach</th><th>Requirements</th><th>Activities</th><th>Delivery</th><th>Goal</th></tr>
@@ -161,5 +165,5 @@ Project Mgmt falls into a lifecycle of product management.
   <tr><td>Iterative</td><td>Dynamic</td><td>Repeated until correct</td><td>Single Delivery</td><td>Correctness of solution</td></tr>
   <tr><td>Incremental (Scrum)</td><td>Dynamic</td><td>Performed once for a given increment</td><td>Frequent Smaller Deliveries</td><td>Speed</td></tr>
 </table>
-<br>Agile leverages Iterative and Incremental, both. Choose what is best for the project.
+<br>Agile leverages Iterative and Incremental, both. Choose what is best for the project.</span>
 
