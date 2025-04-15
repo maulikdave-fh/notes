@@ -29,5 +29,31 @@ Here, we remove the workflow orchestration service and delegate a task of managi
 - Idempotent Kafka Producer → Speeds up event publishing.
 
 # CQRS Pattern
+## Introduction
+- CQRS - Command and Query Responsibility Segregation
+- Used in improving database communication performance
+- Command - action that results in data change - Write / Update / Delete
+- Query - only data read, no data change. Data can be returned as-is or after transformation (sorting / aggregation)
+
+Segregate data & the service into 2 parts - one for Command & other for Query
+![CQRS!](image/cqrs1.png)
+
+To keep data in sync between command and query database, we use event-driven model.
+![CQRS!](image/cqrs2.png)
+
+## Benefits
+Due to Separation of Concerns, we get following benefits;
+1. SRP
+- We can evolve each part independently using an optimal data model in our programming langauge for each workload 
+2. High Performance  
+- We can use optimal schema, structure and database technology for command and query database.
+- Typically, RDBMS is used for write DB. And NoSQL is used for read DB for its performance benefits.
+3. High Scalability
+- We can adjust number of instances for each microservice & database instances depending on its traffic
+4. Joining data from different microservices
+![CQRS!](image/cqrs3.png)
+
+## Additional Notes
+- Since CQRS only guarantees eventual consistency, it may not be a right choice for certain financial use cases. E.g.; Show balance.
 
 # Event Sourcing Pattern
