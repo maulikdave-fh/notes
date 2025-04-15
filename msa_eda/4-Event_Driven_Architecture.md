@@ -23,7 +23,7 @@ This decouples producers from consumers completely.
 1. For actions that can be classified as Fire-and-Forget and are asynchronous by nature - Report Generation Event, Product Review Posting
 2. Reliable Delivery - important in financial systems
 3. Infinite stream of data / events - Sensor / IoT data stream to analyze, transform or store in real-time
-4. Anomaly detection / pattern recognition - metrices from servers in monitoring system. Each data point in isolation is not that interesting or useful, however when we put these events in sequence we gain interesting insights. For example, requests/sec for a given service increases, we know that we have to scale-out. Similarly, if requests/sec suddenly drops, it indicates some hardware or system problem that needs immediate attention.
+4. Anomaly detection / pattern recognition - metrics from servers in monitoring system. Each data point in isolation is not that interesting or useful, however when we put these events in sequence we gain interesting insights. For example, requests/sec for a given service increases, we know that we have to scale-out. Similarly, if requests/sec suddenly drops, it indicates some hardware or system problem that needs immediate attention.
 5. Broadcasting
 6. Buffering - to handle sudden surge in requests / traffic spike
 ## Request-Response Model Use-cases
@@ -55,5 +55,46 @@ Ideal for;
 - fire and forget
 - buffering
 - infinite stream of events
+
+# Message Delivery Semantics
+Publisher, Message Broker and Consumers have to agree on the message delivery semantics ahead of time.
+## At-Most Once
+- Data loss is "OK", but we would like to avoid duplication of data
+In this semantics, we tell our publisher that if it doesn't receive the ack from message broker, don't resend the message. In the best case scenario, if the message did arrive at the message broker but the ack got lost in the network, we won't lose any data. But if message broker didn't receive the request or crashed before it received the event, we will lose the message entirely. 
+
+We tell subscriber to ack the event before it processes the message / stores it in database. This way, if the subscriber crashed, it won't get the event again. 
+- Least overhead / lowest latency
+- good for log delivery, metrics, analytics, etc. Example; in ride sharing service, each driver sending his location every few seconds, we can afford to lose few events. 
+
+## At-Least Once
+- Data loss is unacceptable
+Here, we agree that if a publisher doesn't receiver the ack from message broker in given time, it will resend the event. This guarantees that we never lose the event. But it could result in the event being stored in message broker more than once. 
+
+On subscriber side, we ask subscriber to first process the event and then only send the ack. Until message broker receives an ack, it will keep resending the message.
+- Data duplication is OK
+- Increased latency
+- good for product shipped notification, product review, etc. Not a good choice for high throughput use case. 
+
+## Exactly Once
+- Most difficult to achieve
+- Highest overhead / latency
+- most desirable semantics for use cases involving financial transactions, but it is most difficult to achieve. Not all message broker technologies offer it. If they offer it, read their documentation carefully for the feature. On consumer side, idem-potency id handling is needed at application level.
+
+Some message broker technologies do support generation of idempotency id. If it doesn't, we need a separate sequence number generator service.
+```mermaid
+    sequenceDiagram
+        participant PUB as Service 1 (Publisher)
+        participant SG as Sequence Number Generator
+        participant MB as Message Broker
+        participant SUB as Service 2 (Consumer)
+        participant DB as Database
+        PUB ->> SG : request for idempotency id / sequence number
+        SG -->> PUB : sequence number 1234
+        PUB ->> MB : Event + Id
+        MB -->> PUB : Ack - if PUB doesn't receive the ack, it will resend Event + id
+        PUB ->> MB : Resent Event + Id - MB checks if event with the same idempotency id is already in the log. If it is, MB will ignore the resent event. Otherwise, the event will be added to the log. 
+        MB ->> SUB : Idempotency id check / handling - for this, consumer has to maintain idempotency id against the event record for this check. The consumer can programatically reject the event if the its database already has a record with the same idempotency id.
+        SUB -->> MB : Ack      
+```
 
 
