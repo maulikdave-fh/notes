@@ -25,8 +25,8 @@ All POMs extend the super POM.
 ## Central Repo
 1. Contains jars indexed by groupId and artifactId
 2. Stores all the versions of dependencies
-3. Use <repositories><repository> to specify custom repo
-4. <pluginrepositories><pluginrepository> - repo where plugins are stored
+3. Use ```<repositories><repository>``` to specify custom repo
+4. ```<pluginrepositories><pluginrepository>``` - repo where plugins are stored
 
 ## Local Repo
 1. Maven downloads dependencies from central repo to local repo and are added to project classpath
