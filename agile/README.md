@@ -1,9 +1,9 @@
 # About Agile
-<mark>Agile Manifesto (4 items) -> 12 Principles of Agile Software -> Multiple Methods (Scrum / Kanban / Scrumban / XP / Lean Development / SAFe / and many more)
+<mark>Agile Manifesto (4 items) -> 12 Principles of Agile Software -> Multiple Methods (Scrum / Kanban / Scrumban / XP / Lean Development / SAFe / and many more)</mark>
 
-In brief, Agile is about putting the customer business needs first, eliminating wasteful processes and promoting in-person interactions among team-members and with customer to deliver meaningful software.
+<mark>In brief, Agile is about putting the customer business needs first, eliminating wasteful processes and promoting in-person interactions among team-members and with customer to deliver meaningful software.</mark>
 
-As part of structured autonomy, each team should be able to decide which specific agile method to follow and their release schedules.</mark>
+<mark>As part of structured autonomy, each team should be able to decide which specific agile method to follow and their release schedules.</mark>
 
 # Agile Manifesto values
 1. <b>Individuals and interactions</b> over processes and tools
@@ -26,9 +26,9 @@ As part of structured autonomy, each team should be able to decide which specifi
 12. Retrospectives for continous improvements
 
 # Inverting the Triangle
-<span style="color:yellow">
+<mark>
 In Traditional project mgmt, Scope is fixed, Time and Cost vary. In Agile, Time and Cost are fixed, scope vary. With time and cost fixed, Agile forces you to focus on delivering the most valuable features to your customers. 
-</span>
+</mark>
 
 # Agile Methods
 ## Scrum (Means Meeting)
