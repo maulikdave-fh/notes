@@ -36,10 +36,10 @@ Here, we remove the workflow orchestration service and delegate a task of managi
 - Query - only data read, no data change. Data can be returned as-is or after transformation (sorting / aggregation)
 
 Segregate data & the service into 2 parts - one for Command & other for Query
-![CQRS!](image/cqrs1.png)
+![CQRS!](images/cqrs1.png)
 
 To keep data in sync between command and query database, we use event-driven model.
-![CQRS!](image/cqrs2.png)
+![CQRS!](images/cqrs2.png)
 
 ## Benefits
 Due to Separation of Concerns, we get following benefits;
@@ -51,7 +51,7 @@ Due to Separation of Concerns, we get following benefits;
 3. High Scalability
 - We can adjust number of instances for each microservice & database instances depending on its traffic
 4. Joining data from different microservices
-![CQRS!](image/cqrs3.png)
+![CQRS!](images/cqrs3.png)
 
 ## Additional Notes
 - Since CQRS only guarantees eventual consistency, it may not be a right choice for certain financial use cases. E.g.; Show balance.
@@ -62,7 +62,7 @@ Finding a previous state of a record in database is not always straight-forward.
 
 ## The Pattern
 The events for a given entity reflects either a change or a fact. The events are immutable. Only thing that we can do is to append new events at the end of the log.
-![Event Sourcing!](image/event_sourcing1.png)
+![Event Sourcing!](images/event_sourcing1.png)
 
 To know the current state of the entity, we can replay all the events.
 ![Event Sourcing!](image/event_sourcing2.png)
@@ -70,7 +70,7 @@ To know the current state of the entity, we can replay all the events.
 ## Event Storage Strategies
 1. Database - separate record for each event
 - Ability to generate insights using SQL queries
-![Event Sourcing!](image/event_sourcing3.png)
+![Event Sourcing!](images/event_sourcing3.png)
 2. Message Broker - separate message for each event
 - Not good for performing complex queries 
 
@@ -83,12 +83,12 @@ To know the current state of the entity, we can replay all the events.
 ## Replaying Strategies
 Replaying all the events may not be always efficient. For example; to show account balance. To optimize it, we can apply few strategies;
 1. Snapshots - we can take a snapshot of user's account balance once a month.
-![Event Sourcing!](image/event_sourcing4.png)
+![Event Sourcing!](images/event_sourcing4.png)
 2. CQRS Pattern
 - Using CQRS, we can separate the parts that appends events to our system and stores them from the query part. The query part stores the events in the read-optimized database. The read-only database can even be an in-memory DB.
 
 By using CQRS, command side doesn't need a special database. The message broker provides storage capability.
-![Event Sourcing!](image/event_sourcing5.png)
+![Event Sourcing!](images/event_sourcing5.png)
 
 This combination is very popular because;
 1. We get history and auditing
