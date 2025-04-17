@@ -1,5 +1,5 @@
 # Introduction
-Bugs, performance issues are inevitable in prod. These issues are particularly hard to troubleshoot in distributed systems comprised of many microservices. 
+Bugs, performance issues are inevitable in prod. <mark>These issues are particularly hard to troubleshoot in distributed systems comprised of many microservices. </mark>
 
 ## What is Observability?
 1. Observability allows us to follow a flow of individual;
@@ -13,19 +13,19 @@ across the entire system spanning multiple microservices
 3. Point us to the source of the problem instead of just tell us that the problem exists
 
 In microservices architecture, observability is important because;
-1. We cannot ssh to view logs or do instrumentation on every single microservice instance to identify an issue
+1. <mark>We cannot ssh to view logs or do instrumentation on every single microservice instance to identify an issue</mark>
 2. Statistically, most of the issues occur at endpoints in microservices architecture. Observability provides insights into flow of input and output for each microservice
 
 
 # Three pillars of Observability
-1. Distributed Logging
+1. <mark>Distributed Logging</mark>
 Logs are append only files that logs events happening in app process, container, database instance and server. The logs are represented as structured / semi-structured strings of data. The logs include metadata as such timestamp, request that triggered it, method / class / app where event happened, and so on.
-2. Metrics
+2. <mark>Metrics</mark>
 Regularly sampled data points. It includes numerical values such as counters, distributions, gauges. Some examples are 
 - counters of requests/min, errors/hour
 - distributions of latency
 - gauges such as current CPU utilization, memory usage, cache hit rate
-3. Distributed Tracing
+3. <mark>Distributed Tracing</mark>
 Captures path of given request through several microservices & time each microservice takes to process it. The traces may include additional details such as request headers, response status code.
 
 ## Observability Signals
