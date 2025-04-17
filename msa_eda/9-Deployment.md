@@ -87,12 +87,48 @@ Instead, we can utilize cloud server resources more effectively with containeriz
 ![containers!](images/container7.png)
 
 ## Benefits
-1. Portability across envs and cloud providers
-2. Faster deployment / startup of instances
-3. Lower infra costs
+1. Parity between dev and prod envs
+2. Portability across cloud providers
+3. Faster deployment / startup of instances
+4. Lower infra costs
 
 Instead of renting few smaller VMs, we can rent a larger VM or a dedicated host. This allows us to run more microservices with the same amount of hardware compared to VM per microservice instance approach.
 ![containers!](images/container8.png)
+
+# Container Orchestration
+Challenge of using contains is to manage & deploy thousands of containers for hundreds of microservices, potentially, across different cloud providers
+![container orchestration!](images/orch1.png)
+
+## Introduction
+Container orchestrator is a tool that manages entire lifecyle of containers - it is like an OS for microservices architecture deployed as containers
+
+Container orchestrator is responsible for;
+1. Deployment automation of microservices as containers
+2. Managing resource allocation to containers to ensure each container gets right amount of CPU, memory and storage to work properly
+3. Monitoring the health of containers
+4. Self-healing - to maintain healthy number of instances of each microservice
+5. Bin-packing - better hardware utilization
+6. Load balancing between containers of the same microservice 
+7. Scaling services out or in by adding / removing containers based on the traffic and resource utilization
+8. Container discovery
+9. Network connectivity between containers and the outside world
+
+## Kubernetes Architecture (Representative)
+Kubernetes is popular, but not the only container orchestration tool
+
+![container orchestration!](images/orch2.png)
+![container orchestration!](images/orch3.png)
+Configs
+![container orchestration!](images/orch4.png)
+
+Real-life Env
+![container orchestration!](images/orch5.png)
+
+
+
+
+
+
 
 
 
