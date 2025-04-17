@@ -1,9 +1,12 @@
 # Key git Commands
 ## git init
+to create a new repo - It can be used to convert an existing, unversioned project to a Git repository or initialize a new, empty repository
 ## git status
+provides a snapshot of the current state of your working directory and staging area. It shows you which files have been modified, added, deleted, or are untracked, and whether they have been staged for commit.
 ## git log
+displays all of the commits in a repository's history.
 ## git add
-to stage the files for commit
+adds a change in the working directory to the staging area. 
 - git add . 
 - git add <specific_file1> <specific_file2> - recommended to group changes across multiple files meant for a common feature / bug fix together.
 ## git commit
@@ -13,6 +16,7 @@ to stage the files for commit
 ## git push <remote_pointer_name> <local_branch>
 - to push local committed changes from the local branch to remote 
 ## git clone <remote_repo_url>
+primarily used to point to an existing repo and make a clone or copy of that repo at in a new directory, at another location.
 ## git branch
 CRUD ops for git branches
 ### git branch
@@ -42,3 +46,9 @@ renames a current branch to a new name
 #### Merge Commit
 scenario where you have changes in master after you branched-off feature branch & if there are no conflicting changes between master and feature branch. git takes care of merging for us.
 ![Merging!](images/merge7.png)
+
+
+#### Conflicting Changes
+##### Steps to resolve conflicts
+![Merging!](images/merge8.png)
+
