@@ -53,3 +53,46 @@ To cloud vendor, we need to provide;
 1. If the traffic pattern changes, infra costs may increase significantly
 2. Unpredictable performance
 3. Less secured - runs in multi-tenant env and our source code is exposed to cloud provider
+
+# Containers
+## The Problem Statement(s)
+### Dev / Prod Env. Parity
+"It worked fine on my machine"
+
+## Benefits over VM based approach
+### Dev Env
+Running multiple microservices with virtulization on dev machine is too much of overhead
+![containers!](images/container1.png)
+
+If we want to run multiple microservices on our machine for integration, we need to run multiple VMs - each with its own copy of OS and its own kernel. This makes the dev machine extremely slow and inefficient
+![containers!](images/container2.png)
+
+Instead containerization solve this problem by isolating only what we want to isolate and sharing everything else. This has less overhead.
+![containers!](images/container3.png)
+
+### Integration Env
+Now, we can run the contain image on any OS and hardware now that supports container and container runtime. 
+![containers!](images/container4.png)
+
+### Production Env
+VM based deployments have few drawbacks;
+- Inefficient resource utilization
+- Slow to start new instances - create VM, deploy, etc.
+![containers!](images/container5.png)
+- Cloud vendor lock-in & lack of portability. VM image formats & configs are cloud vendor specific
+Also, managing multi-cloud or hybrid cloud envs with VM based approach would be a nightmare.
+![containers!](images/container6.png)
+
+Instead, we can utilize cloud server resources more effectively with containerization;
+![containers!](images/container7.png)
+
+## Benefits
+1. Portability across envs and cloud providers
+2. Faster deployment / startup of instances
+3. Lower infra costs
+
+Instead of renting few smaller VMs, we can rent a larger VM or a dedicated host. This allows us to run more microservices with the same amount of hardware compared to VM per microservice instance approach.
+![containers!](images/container8.png)
+
+
+
