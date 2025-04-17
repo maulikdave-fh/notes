@@ -6,11 +6,11 @@ Security vulnerability impacts availability, integrity and confidentiality of da
 
 ## Security Controls
 ### Preventive 
-1. PCI-DSS Requirements - Secure data in transit and data at rest by secure networks, systems and apps. PCI-DSS has 6 Goals -> 12 Requirements 0> 400+ controls.
+1. PCI-DSS Requirements - Secure data in transit and data at rest by securing networks, systems and apps. PCI-DSS has 6 Goals -> 12 Requirements -> 400+ controls.
 2. Shift Security Left - Secure by design, secure coding practices - OWASP (Open Web Application Security Project), CI pipeline with static / dynamic code analysis, code reviews, penetration testing.  
    
 ### Detective 
-1. Intrusion Detection & Alerts
+1. Intrusion Detection & Alerts - comprehensive observability implementation.
    
 ### Corrective
 1. Incident Response
@@ -24,17 +24,17 @@ Never trust user provided data or data coming from other apps / services.
 1. Input data validations on type, length, limits.
 2. Rate Limiting / Throttling - In microservices architecture, API gateway can be leveraged for this
 3. Schema based validations
-4. White-listing
+4. White-listing over black-listing
 
 #### Miscellaneous
-1. SQL Injection (%;UPDATE PRODUCT set price=0--) - Use PreparedStatement with parameterized query. JPA's Hibernate implementation is safe.
+1. SQL Injection (```%;UPDATE PRODUCT set price=0--```) - Use ```PreparedStatement``` with parameterized query. JPA's Hibernate implementation is safe.
 2. Password - Hashing + Password specific salt	+ work factor (delay factor) using BCrypt , Scrypt, PBKDF2, Argon2. Avoid MD5, SHA
 3. Encryption - Use AES with 128/256 bits key, secure mode for Symmetric Key Cryptography
 4. File Upload - file name sanitization for path traversal - ensure that it is uploaded to intended directory, check file extension, check file content for allowed type, Minimal access rights on upload directory
 5. Use Random Pseudo number generator for session ids, unique ids - sequential ids are more predictable and prone to enumerating attack
 6. OWASP's Java encoder
 7. XML Parsing - For XMLs coming from third party services. In XMLReader, use correct feature settings - disable doc types, disable external entities
-8. YAML - Use SnameYaml2.x with Spring.
+8. YAML - Use SnakeYaml2.x with Spring.
 
 #### Usage of Third-party Libs / Frameworks
 1. Review for vulnerablities
@@ -43,7 +43,7 @@ Never trust user provided data or data coming from other apps / services.
 ### Secure By Design
 1. Zero Trust - Validate every request, validate all data entering your system
 2. Principle of Least Privillege - Clarity on roles and privilleges, allow access for minimal period needed
-3. Defence in Depth - Multiple inter-related security measures to secure the system - no single point of failure. Multiple levels of security: Transport, Network, Infrastructure; OS, Application. For example, ID&V, MFA, Firewalls, Malware detection, ACL, Access Scanning, Cryptography for securing data, Backup & recovery, etc.
+3. Defence in Depth - Multiple inter-related security measures to secure the system - no single point of failure. Multiple levels of security: Transport, Network, Infrastructure, OS, Application. For example, ID&V, MFA, Firewalls, Malware detection, ACL, Access Scanning, Cryptography for securing data, Backup & recovery, etc.
 4. Fail safe - Murphy's law. If something fails, it should fail in a secured position. For example; if firewall fails, instead of allowing traffic, it should deny all traffic - valid & invalid both.
 5. KISS - More complex the system, more difficult to secure. Openness of design - easier to identify and fix security flaws, follow security standards
 6. SRP - Without SRP, one vulnerable service can make the entire system vulenrable.
@@ -81,7 +81,10 @@ Never trust user provided data or data coming from other apps / services.
 2. Secure way of transmitting information between 2 parties in stateless manner - unlike session token where subsequent requests to server with a session token has to land on the same server that issued the session token. JWTs are ideal for distributed systems.
 3. User is authenticated once, issued a JWT that contains information like user role. The JWT can be sent to APIs & APIs can authorize the user for granting access. Helps reduce a load on authentication server.
 4. PKI is used - private key to sign the JWT and public key to verify the JWT
-5. JWT has a. Return address - tells who sent the token, b. Payload - contains claims (Registered claims & Custom claims) c. JWT Wax seal - Signature of JWT to make the JWT temper-proof
+5. JWT has
+- Return address - tells who sent the token
+- Payload - contains claims (Registered claims & Custom claims) 
+- JWT Wax seal - Signature of JWT to make the JWT temper-proof
 6. Registered claims - has JWT issuer details, JWT subject details (id), Audience for the JWT (API endpoint), Expiry, Issue time
 7. Custom claims - you can have entities like role or any other custom data that may help authenticate and authorize user
 8. JWT is signed and encoded. No sensitive information should be part of JWT.
