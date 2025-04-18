@@ -5,6 +5,14 @@ Scalability patterns enable us;
 - Save costs
 
 # Load Balancing Pattern
+## Goal
+Helps us take advantage of "infinite" access to cloud computers
+
+## Components 
+- Source
+- Dispatcher
+- Workers
+
 Load balancing pattern puts a dispatcher between the source of the data / network requests to our system and the workers that process that data and send back a response.
 ![LB!](images/lb1.png)
 
