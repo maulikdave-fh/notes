@@ -12,12 +12,12 @@ Saga pattern gives transaction support across microservices using compensating t
 ![Saga pattern!](images/saga2.png)
 
 ## Two ways to Implement
-### Workflow Orchestration  
+### Workflow Orchestration (Execution Orchestration Pattern)  
 Based on request-response model where workflow orchestration service manages the state of each transaction. If anything goes wrong, it will fire compensating transaction requests to appropriate services.
 
-Here, orchestration service is tightly coupled with all the involved microservices. 
+Here, orchestration service is tightly coupled with all the involved microservices. It is considered Distributed Monolith Anti-pattern.
 
-### Event-Driven Model
+### Event-Driven Model (Choreography Pattern)
 Here, we remove the workflow orchestration service and delegate a task of managing the workflow to microservices themselves. The communication between involved microservices is done using message broker. Each microservice needs to be aware where it needs to send events when successful and failure scenarios to trigger the compensating ops. 
 
 ## Additional Notes
