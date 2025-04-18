@@ -50,6 +50,11 @@ Using this data, we can define auto-scaling policies and used by cloud based loa
 1. Scale up / Scale down - Vertical scaling - increasing / reducing computing capacity of instances 
 2. Scale out / Scale in - Horizontal scaling - increasing / reducing number of instances 
 
+##### HAProxy / Nginx vs Cloud Load Balancing Service
+What does the Cloud Load Balancing Service offer that a simple Software Load Balancer (such as HAProxy or Nginx) running on a single cloud virtual machine doesn't?
+1. Auto-scaling
+2. Distributed system running in different isolation zones
+
 ### 2. Message Broker / Distributed Message Queue
 ![LB!](images/lb5.png)
 
