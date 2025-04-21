@@ -262,3 +262,13 @@ If the queue doesn't exist
 
 Or the message has been in a queue for too long - may indicate that consumers keep crashing while trying to consume the message.
 
+## Important Notes
+1. It is important to add information about the reason for the failure to the message that gets into the DLQ. Typically, it is done by including error details header - it should contain error code / stack trace / message that explains the error
+![DLQ!](images/dlq3.png)
+2. We need aggressive monitoring and alerting on the DLQ - messages in DLQ indicate an issue
+![DLQ!](images/dlq4.png)
+
+Once the issue is resolved, we can use a tool to republish the message. Alternatively, message can be processed manually for one-off issue
+![DLQ!](images/dlq5.png)
+
+
