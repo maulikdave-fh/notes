@@ -33,7 +33,7 @@ Beauty of a distributed system is that
         Store.java --> application.jar
         Item.java --> application.jar
 ```
-
+OS creates an instance of the application in the memory. That instance is called the process. That process is entirely isolated from any other process running on the same computer - no matter if the other process is an instance of the same app or a different app.
 ```mermaid
     flowchart LR
         subgraph filesystem
@@ -51,12 +51,12 @@ Beauty of a distributed system is that
         application.jar --> process_id_1324        
 ```
 
+Processes running on  the same machine can communicate with each other through the network, file-system and the memory. This still not a distributed system because all the processes share the same resources and cannot be scaled horizontally.
+
 ## Node
-process running as a dedicated machine
+process running on a dedicated machine
 
 ## Cluster
 collection of nodes connected to each other.
 
 The nodes in a cluster are working on the same task, and typically are running the same code.
-
-# Challenges
