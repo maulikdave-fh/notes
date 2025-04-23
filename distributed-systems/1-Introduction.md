@@ -29,7 +29,7 @@ Beauty of a distributed system is that
         subgraph filesystem
             application.jar
         end
-        Main.jar -> filesystem
+        Main.jar --> filesystem
 ```
 
 ## Node
