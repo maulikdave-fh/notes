@@ -52,11 +52,3 @@ OS creates an instance of the application in the memory. That instance is called
 ```
 
 Processes running on  the same machine can communicate with each other through the network, file-system and the memory. This still not a distributed system because all the processes share the same resources and cannot be scaled horizontally.
-
-## Node
-process running on a dedicated machine
-
-## Cluster
-collection of nodes connected to each other.
-
-The nodes in a cluster are working on the same task, and typically are running the same code.
