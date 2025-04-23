@@ -1,5 +1,6 @@
 My notes while learning various topics;
 
+- Distributed Systems - https://github.com/maulikdave-fh/notes/tree/main/distributed-systems
 - Cloud Architectural Patterns - https://github.com/maulikdave-fh/notes/tree/main/cloud-patterns
 - Microservices Architecture and Event Driven Architecture - https://github.com/maulikdave-fh/notes/tree/main/msa_eda
 - CPSA - https://github.com/maulikdave-fh/cpsa
