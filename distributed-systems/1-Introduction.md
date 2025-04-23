@@ -49,7 +49,7 @@ Beauty of a distributed system is that
         
         CPU --> application.jar
         application.jar --> process_id_1324        
-        ```
+```
 
 ## Node
 process running as a dedicated machine
