@@ -44,11 +44,11 @@ Beauty of a distributed system is that
         end
         
         subgraph memory
-            process id: 1324
+            process id 1324
         end
         
         CPU --> application.jar
-        application.jar --> process id: 1324        
+        application.jar --> process id 1324        
         ```
 
 ## Node
