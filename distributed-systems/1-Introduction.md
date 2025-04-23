@@ -35,7 +35,7 @@ Beauty of a distributed system is that
 ```
 
 ```mermaid
-    flowchart TB
+    flowchart LR
         subgraph filesystem
             other-app.jar
             application.jar
