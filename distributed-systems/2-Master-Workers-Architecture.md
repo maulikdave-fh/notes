@@ -80,3 +80,16 @@ Each element is called a Znode
 
 3. Step 3 - If the Znode that current node created is the smallest number, it knows that it is now the leader. On the other hand, if the Znode that current node created is not the smallest, it knows that it is not a leader and it waits for work to be assigned.  This is how we break the symmetry.  
 ![ZooKeeper!](images/zk4.png)
+
+### The Herd Effect
+1. Large number of nodes waiting for an event
+2. When the event happens, all nodes get notified and they all wake up
+3. Only one node can "succeed"
+4. Indicates bad design, can negatively impact the performance and completely freeze the cluster
+
+### Leader Reelection Algorithm
+Instead of all nodes watching the leader znode, each node watches the znode that is right before it in the sequence of candidate znodes. The node watching current leader's znode gets notifed if the leader dies and it becomes a new leader.
+![ZooKeeper!](images/zk5.png)
+
+if notified znode didn't belong to the leader, the node simply closes the gap in the chain and points to the previous znode.
+![ZooKeeper!](images/zk6.png)
