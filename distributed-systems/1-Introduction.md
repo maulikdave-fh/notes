@@ -30,9 +30,26 @@ Beauty of a distributed system is that
             application.jar
         end
         Main.java --> application.jar
-        Store.java --> filesystem
-        Item.java --> filesystem
+        Store.java --> application.jar
+        Item.java --> application.jar
 ```
+
+```mermaid
+    flowchart TB
+        subgraph filesystem
+            other-app.jar
+            application.jar
+            photo.jpeg
+            music.mp3
+        end
+        
+        subgraph memory
+            process id: 1324
+        end
+        
+        CPU --> application.jar
+        application.jar --> process id: 1324        
+        ```
 
 ## Node
 process running as a dedicated machine
