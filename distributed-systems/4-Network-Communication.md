@@ -77,3 +77,95 @@ Protocols
 - DNS (Domain Name System) - Translating host names into IP addresses
 - HTTP (HyperText Transfer Protocol) - transmitting hypermedia documents, video, sound, images
 
+# HTTP for Distributed Systems
+Each HTTP transaction has 2 parts
+- Request from client to server
+- Response from server to client - even if client doesn't need a response from server, a transaction is not complete until the response is received. 
+
+## HTTP Request Structure
+Each request has following 5 parts;
+![HTTP!](images/http1.png)
+
+### method
+can be any of the following set of standard methods - Get, Head, Post, Delete, Put, Trace, Connect, Options, Patch
+
+#### Get Method
+**Properties of Get Method**
+- Safe - only retrieval action with no side effects - like a getter method in java
+- Idempotent - performing the underlying operation N times is equivalent to performing operation only once
+- Request doesn't contain any message body
+
+**Use cases**
+- Periodic Health check of nodes in cluster
+- Data retrieval from other microservices
+
+#### Post Method
+**Properties of Post Method**
+- A request contains a message body (payload)
+- The operation may have side effects and we expect the server to perform a complex operation and give us a result
+- Useful to send messages between different nodes
+
+### relative Path
+The relative path may also contain query string that allows to send some useful information required to perform operation on server
+![HTTP!](images/http2.png)
+
+### protocol version
+#### HTTP/1.1
+A new TCP connection has to be established when client wants to send some message to a server  - this connection opening has some overhead. Until client receives a response, it cannot send any additional request to server on using the same connection.
+
+**Disadvantages**
+1. Creating a connection for every single request is expensive & increases a latency.
+2. The number of outgoing connections a client can maintain is limited by
+- number of ports
+- the OS
+
+**Advantage**
+if one of the TCP connection breaks, other connections stay unaffected.
+
+#### HTTP/2
+Allows to send multiple requests using the same connection simultaneously. This version of HTTP interleaves multiple requests and responses using the same connection and this interleaving is transparent to us - is done by logically breaking the connection into multiple internal streams. 
+
+### HTTP Headers
+Key-value pairs of strings.
+
+```
+    Header-Name: Value1; Value2; Value3
+```
+
+#### Usage
+1. Many standard headers that are used for many purposes
+- Content-Length - indices size of the message body
+- Content-Type - type of the message body. application/json
+- Content-Encoding - compression algo to be used
+2. Some headers are used only in request and some are only in response, some are used in both
+3. allows recipient to take actions before reading the message body
+- memory allocation
+- skipping /forwarding (proxying)
+4. Can create custom headers, for example
+- X-Debug - pass / log more debug info while handling the request
+- X-Experiment - turn on experimental features for A/B testing
+- X-Test - operate on test data instead of customer's data
+- Timestamp headers for transaction instrumentation that can span multiple services
+![HTTP!](images/http3.png)
+
+#### Protocol Differences
+1. In HTTP/1.1 - plain text key-value pairs that can be easily inspected by tools like Wireshark. 
+2. In HTTP/2, the headers are compressed for efficiency
+- saves on payload size
+- harder to inspect / debug
+
+### Message Body
+1. Can contain anything we want as long as  the server and client agree on how to parse the data
+2. Can contain complex data objects
+
+## HTTP Response
+![HTTP!](images/http4.png)
+
+The response status codes are divided into 5 groups;
+1. 1xx - Informational Response
+2. 2xx- Success
+3. 3xx- Redirection
+4. 4xx - Client Errors
+5. 5xx - Server Errors
+
+
