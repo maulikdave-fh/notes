@@ -325,7 +325,22 @@ Typically, we put objects needed to be shared between nodes inside a common jar 
 
 ![HTTP!](images/http10.png)
 
+Example of a proto file
 ![HTTP!](images/http11.png)
+
+###### Advantages
+1. No type ambiguity
+2. Clear and well defined schema (stored in a proto file)
+3. Language independent thanks to 2 step process
+- Proto file definition
+- language specific stub generation using proto compiler
+4. Efficient serialization and deserialization
+5. Security
+
+##### Disadvantages
+1. Not human readable, difficult to debug
+2. more complex development process
+
 
 
 
