@@ -224,12 +224,14 @@ Each node takes both reads and writes and every write is propagated to other nod
 **Attempt 1**
 1. It will take long to write to all the other nodes - best scenario
 2. If any of the node is unavailable, the operation will timeout -worst scenario
+![Distributed System!](images/db24.png)
+
 
 **Solution is the Quorum Consensus**
 ##### Quorum Consensus - Record Version
 1. Each record in our database along with the key and value will have a version.
 2. Every update to the record will increment the version number to distinguish between the older record and a newer record
-![Distributed System!](images/db24.png)
+![Distributed System!](images/db25.png)
 
 **Quorum Definitions**
 **R** - Minimum number of nodes a reader needs to read from
@@ -242,7 +244,6 @@ If we choose R & W such that their sum is greater than number of nodes in the cl
 
 **Example**
 R = 3, W = 3, N = 5
-![Distributed System!](images/db25.png)
 
 Data is written to 3 nodes
 ![Distributed System!](images/db26.png)
@@ -251,23 +252,3 @@ Reader will read from 3 nodes and pick the record with the higher version
 ![Distributed System!](images/db27.png)
 
 To optimize for reads, we can choose R = 2 and W = 4. Reader needs to pick only 2 nodes to pick from giving lower latency.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
