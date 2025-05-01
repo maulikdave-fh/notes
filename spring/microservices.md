@@ -1,6 +1,16 @@
 # Key Solutions for Microservices
 ## Spring Boot
-Rapid development of REST APIs
+Build PRODUCTION READY apps QUICKLY
+### QUICKLY
+1. Spring Initializer
+2. Spring Starter projects
+3. Spring auto configurations
+4. Spring devtools
+
+### PROD READY
+1. Logging
+2. Profiles & ConfigurationProperties
+3. Actuators (health, metrices, beans, request mappings)
 
 ## Spring Cloud
 Umbrella project with multiple services for microservices architecture
