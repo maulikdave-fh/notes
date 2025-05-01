@@ -136,25 +136,31 @@ Because of this, some of the RDBMS don't even support automated sharding & are h
 ### Hash Based Sharding Issues
 #### Dynamic Cluster Resizing
 If we want to add a new instance to the cluster, the formula to identify a shard changes and queries won't find the records that were stored based on previous formula. All existing records will have to move to a new instance according to a new sharding formula
+
 ![Distributed System!](images/db11.png)
 
 Similarly if we want to remove a node from the cluster, we will have reshuffle a large number of keys not only from the node that was removed but from all the remaining nodes as well
+
 ![Distributed System!](images/db12.png)
 
 #### Asymmetric Nodes
 Not all instances may have the same capacity
+
 ![Distributed System!](images/db13.png)
 
 In this case, we would like to allocate more records to the more powerful node. There is no way to achieve this using a standard hashing algo
+
 ![Distributed System!](images/db14.png)
 
 To address above limitations of a standard hashing algo, we can use consistent hashing algo based sharding.
 
 ### Consistent Hashing Based Algo
 Idea of consistent hashing is to not just hash keys but also a node into the same keyspace
+
 ![Distributed System!](images/db15.png)
 
 Alternative representation, turn it into a ring
+
 ![Distributed System!](images/db16.png)
 
 For example, key with a value 1 belongs to node 2
@@ -167,6 +173,7 @@ For example, key with a value 1 belongs to node 2
 
 **Example**
 After removing node 2
+
 ![Distributed System!](images/db18.png)
 
 ### Consistent Hashing Virtual Nodes
@@ -190,14 +197,17 @@ After removing node 2
 ### Replication Benefits
 #### High Availability
 If Master is unavailable, say due to network failure, the system is still functional by pointing to the replica
+
 ![Distributed System!](images/db19.png)
 
 #### Fault Tolerance
 If Master disk fails, the system can continue to function with the replica
+
 ![Distributed System!](images/db20.png)
 
 #### Performance & Scalability
 Specifically shines in read intensive operations
+
 ![Distributed System!](images/db21.png)
 
 ### Replicated Database Architectures
@@ -245,10 +255,14 @@ If we choose R & W such that their sum is greater than number of nodes in the cl
 **Example**
 R = 3, W = 3, N = 5
 
-Data is written to 3 nodes
 ![Distributed System!](images/db26.png)
 
-Reader will read from 3 nodes and pick the record with the higher version
+Data is written to 3 nodes
+
 ![Distributed System!](images/db27.png)
+
+
+Reader will read from 3 nodes and pick the record with the higher version
+![Distributed System!](images/db28.png)
 
 To optimize for reads, we can choose R = 2 and W = 4. Reader needs to pick only 2 nodes to pick from giving lower latency.
