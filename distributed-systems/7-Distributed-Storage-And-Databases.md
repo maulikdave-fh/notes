@@ -157,7 +157,8 @@ Idea of consistent hashing is to not just hash keys but also a node into the sam
 Alternative representation, turn it into a ring
 ![Distributed System!](images/db16.png)
 
-For example, key with a value 1 belongs to node 2.
+For example, key with a value 1 belongs to node 2
+
 ![Distributed System!](images/db17.png)
 
 #### Advantages
