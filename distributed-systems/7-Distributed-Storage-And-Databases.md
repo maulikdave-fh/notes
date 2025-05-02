@@ -266,3 +266,132 @@ Reader will read from 3 nodes and pick the record with the higher version
 ![Distributed System!](images/db28.png)
 
 To optimize for reads, we can choose R = 2 and W = 4. Reader needs to pick only 2 nodes to pick from giving lower latency.
+
+## MongoDB
+### Introduction
+MongoDB is scalable, document oriented, NoSQL database.
+
+There are many NoSQL databases available, optimized for different
+- data models
+- workload
+- operations
+There is no single winner.
+
+MongoDB has a very simple data model. 
+1. It is a document oriented database. 
+2. It stores data in JSON format.
+3. Every object has a unique id that is auto-generated for us if we don't provide one
+4. Internally, MongoDB stores the objects in binary format called BSON
+
+**BSON Serialization**
+![MongoDB!](images/mongo1.png)
+
+### Terminology
+- Row in RDBMS -> Object / Document in MongoDB
+- Cols in RDBMS -> Fields inside the document
+- Primary key in RDBMS -> Object id
+- Table in RDBMS -> Collection (of documents)
+
+### Operations
+1. Supports CRUD
+2. The document's "_id" is immutable and cannot be changed after the document's creation
+![MongoDB!](images/mongo2.png)
+
+### Basic Commands
+1. ```mongod.conf``` contains config details like, path to logs, path to data, host IP, port.
+2. mongodb server instance is started, typically by pointing to ```mongod.conf```
+3. use ```mongosh``` to start CLI
+4. ```show dbs``` shows all available databases
+5. ```use <db name>``` will switch to existing db. If the db with the name doesn't exist, it will create one and switch
+6. ```show collections``` - shows all available collections in the db
+7. To create a new collection, use ```db.createCollection("collection_name")```. Alternatively, use ```db.<collection name>.insertOne(Object)``` - if the collection didn't exist, it will create one and insert the Object to it. To provide our own id, we can pass _id ```{"_id":"abc", "name":"John"}``` along with the object.
+8. ```db.<collection name>.find()``` to list all records of the collection
+9. To insert multiple objects, ```db.<collection_name>.insertMany([Object1, Object2])```
+10. To filter, ```db.<collection_name>.find({field_name:field_value})```. For example, ```db.students.find({name:"John"})```
+11. Range filter, ```db.students.find({age: {$gt:30}})```
+12. More advance query to find students whose favorite colors are blue or black, ```db.students.find({$or:[{fav_color:"blue}, {fav_color:"black"}]})```
+13. db.students.find({$or:[{fav_color:"blue}, {fav_color:"black"}]}).limit(2)``` limits count of records to be returned
+14. To update, ```db.students.updateOne({name:"John"}, {$set:{age:23}})```
+15. To delete, ```db.students.deleteMany({age:{$lt : 18}})```
+
+### MongoDB Replication Set Architecture
+By default, all reads and writes go to the primary instance. And secondary instances are replicated to keep them upto date.
+![MongoDB!](images/mongo3.png)
+
+If primary fails, secondary instances hold election and elect a new primary. Until the election is completed, no write operations are permitted. Once the old primary recovers, it can join back as secondary or primary depending upon our configuration.
+
+#### Write Semantics
+By default, write operation is acknowledged as soon as the data is written as the primary
+![MongoDB!](images/mongo4.png)
+
+**Write Concern**
+But this may result in a data loss, if primary goes down before replication is completed to the secondaries. To avoid this, we can issue a write concern of 2 or more instances when we send a write operation to mongodb.
+
+![MongoDB!](images/mongo5.png)
+
+**Write Concern Majority**
+Similarly, we can specify write concern as majority to force write to the majority of the instances regardless of the cluster size. This is one of the reasons why cluster should have odd number of instances. 
+![MongoDB!](images/mongo6.png)
+
+#### Read Preferences
+**Primary Preferred**
+![MongoDB!](images/mongo7.png)
+
+if primary fails and new primary is not elected yet, we can still read from secondary.
+
+![MongoDB!](images/mongo8.png)
+
+**Secondary**
+If number of reads are too much for primary and if we are okay with eventual consistency
+![MongoDB!](images/mongo9.png)
+
+**Nearest**
+If we have deployed our cluster across multiple physical locations, we can specify "nearest" as a read preference. This may mean that we may be reading a stale data  but that's a trade-off for a lower latency.
+![MongoDB!](images/mongo10.png)
+
+### Scaling MongoDB using Data Sharding
+MongoDB supports 2 sharding strategies
+1. Hash based
+2. Range based
+
+Once we select a key for sharding, it cannot be changed later on without significant impact.
+#### Sharding Strategy Decision
+1. The key and the sharding strategy must be chosen together to guarantee
+- Scalability as the collection grows
+- Efficiency as number of operations per second increases on our database
+
+In either of the strategies, the records are bucketed in the chunks. Each chunk has a lower and upper bound and together all the chunks cover the entire keyspace.
+
+![MongoDB!](images/mongo11.png)
+
+How documents are assigned to a particular shard is based on a particular sharing strategy
+
+If the chunk size grows beyond threshold size, it is split into smaller chunks.
+![MongoDB!](images/mongo12.png)
+
+![MongoDB!](images/mongo13.png)
+
+If MongoDB detects uneven distribution of chunks, it migrates chunks to make the distribution across instances even.
+
+![MongoDB!](images/mongo14.png)
+
+#### MongoDB Sharding Architecture
+To determine which shard a client should talk to, the MongoDB has introduced a new component called Router that runs as ```mongos``` instance. Instead of connecting to any shards directly, client app only needs to know only mongos address. The router will direct the request to one or multiple shards depending on the query.
+
+![MongoDB!](images/mongo15.png)
+
+The component that determines where each chunk is going to be located and also performs a balancing among the shards, is the Config server. Config server also runs as a separate process. 
+
+![MongoDB!](images/mongo16.png)
+
+The router just routes queries based on the information provided to it by the config server. 
+
+Since the information managed by config server is important for shared cluster, MongoDB forces us to run it as a replication set.
+
+**Replication + Sharding**
+![MongoDB!](images/mongo17.png)
+
+
+
+
+
