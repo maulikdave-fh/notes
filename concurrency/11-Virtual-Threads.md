@@ -56,6 +56,30 @@ Many of the blocking operations were refactored to support virtual threads so pl
 - Networking API - Socket / Datagrams (TCP / UDP)
 - etc
 
+## Notes
+1. We still need to be aware of all thread safety issues using the virtual threads. All the concepts of locking, interthreads communication, etc apply to virtual threads also
+
+2. Virtual threads have no benefits for tasks only involving CPU operations. It shines when blocking operations are involved. If we are sure that there is no blocking calls in our code, we should stick to platform threads.
+
+3. Virtual threads have no benefits when it comes to latency. The benefit that we get with virtual threads is better throughput.
+
+4. Short and frequent blocking calls are inefficient - virtual threads are better choice for it over platform threads because thread-per-task with platform threads introduces context switching cost. Thread-per-task with virtual threads has only mounting / unmounting cost.
+
+Since price of mounting / unmounting virtual threads is not ZERO, we should batch IO operations into less frequent, long IO operations whenever possible.
+
+5. Virtual threads are always daemon threads. They won't prevent our application from terminating. ```virtualThread.setDaemon(...)``` throws an exception
+
+6. Virtual threads always have a default priority. ```virtualThread.setPriority(...)``` doesn't do anything
+
+
 ## Best Practices
+1. Never create fixed sized pools of virtual threads. JVM is already doing it for us by creating platform thread pool. We should stick to thread-per-task model.
+
+2. Preferred way to use virtual thread is to use ```Executors.newVirtualThreadPerTaskExecutor()```
+
+## Observability and Debugging
+1. Carrier threads are hidden from us when we set a debugger on virtual thread. The IDEs / debuggers treat virtual threads like any other threads
+
+
 
 
