@@ -9,7 +9,7 @@
 
 ### 2. Performance - Parallelism
 - We can create an illusion of multiple tasks executing in parallel using just a single core
-- With multiple cores, we can truely run multiple tasks completely in parallel
+- With multiple cores, we can truly run multiple tasks completely in parallel
 ![Concurrency!](images/thread2.png)
 - Completing complex task much faster
 - Finish more work in the same period of time
