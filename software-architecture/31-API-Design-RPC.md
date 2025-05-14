@@ -1,9 +1,12 @@
 ## RPC
 ```mermaid
-    flowchart LR
-        Client Application -->> Server Application : Remote Procedure Call
-        Server Application -->> Server Application : Subroutine
-        Client Application <<-- Server Application : Response
+    sequenceDiagram
+        participant client as Client Application
+        participant server as Server Application
+        
+        client ->> server : Remote Procedure Call
+        server ->> client : Subroutine
+        client <<-- server : Response
 ```
 
 ### Unique Features of RPC
