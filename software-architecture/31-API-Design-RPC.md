@@ -1,6 +1,6 @@
 ## RPC
 ```mermaid
-    flowchar LR
+    flowchart LR
         Client Application -->> Server Application : Remote Procedure Call
         Server Application -->> Server Application : Subroutine
         Client Application <<-- Server Application : Response
