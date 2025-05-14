@@ -5,7 +5,7 @@
         participant server as Server Application
         
         client ->> server : Remote Procedure Call
-        server -->> client : Subroutine
+        server -->> server : Subroutine
         server -->> client : Response
 ```
 
