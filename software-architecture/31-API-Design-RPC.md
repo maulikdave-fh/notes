@@ -5,8 +5,8 @@
         participant server as Server Application
         
         client ->> server : Remote Procedure Call
-        server ->> client : Subroutine
-        client <<-- server : Response
+        server -->> client : Subroutine
+        server -->> client : Response
 ```
 
 ### Unique Features of RPC
