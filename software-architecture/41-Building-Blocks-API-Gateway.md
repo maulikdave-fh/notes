@@ -3,7 +3,7 @@
 2. Reduce code duplication
 3. Simply our external API
 
-API Gateway is an API management service that sits in between client and the collection of backend services. 
+API Gateway is an API management service that sits in between client and the collection of back-end services. 
 
 ![API Gateway!](images/ag1.png)
 
@@ -39,4 +39,35 @@ API gateway can aggregate results from multiple services and respond back in sin
 ![API Gateway!](images/ag5.png)
 
 ### Considerations and Anti-Patterns
+1. API gateway should not contain any business logic 
+The main purpose of API gateway is
+- API composition
+- Routing requests to different services
+Adding a business logic to API gateway is an anti-pattern - we will end up making a single service that does all the work and contains an unmanageable amount of code
+
+2. API gateway may become a single point of failure
+- put it behind LB
+- be extra careful when putting a new release on API gateway
+
+3. Avoid bypassing API gateway from external services
+![API Gateway!](images/ag6.png)
+
+### API Gateway Solutions
+#### Open Source API Gateways
+##### Netflix Zuul
+Zuul is a free and open-source application gateway written in Java that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.
+
+##### Cloud-Based API Gateways
+###### Amazon API Gateway
+Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. Supports RESTful APIs and WebSocket APIs (bi-directional communication between client and server).
+
+###### Google Cloud Platform API Gateway
+Google Cloud Platform API Gateway enables you to provide secure access to your services through a well-defined REST API that is consistent across all of your services, regardless of service implementation. It is designed for serverless workloads on GCP. For full documentation, follow this link.
+
+###### Apigee 
+Apigee is Google Cloud’s API management product that enables organizations to build, manage, and secure APIs — for any use case, environment (on-premises, in Google Cloud, or a hybrid environment), or scale. For full documentation, follow this link.
+
+###### Microsoft Azure API Management
+API Management helps organizations publish APIs to external, partner, and internal developers to unlock the potential of their data and services.
+
 
